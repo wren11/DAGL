@@ -1,0 +1,11 @@
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\DarkAges.Library.csproj.AssemblyReference.cache
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\DarkAges.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\DarkAges.Library.csproj.CoreCompileInputs.cache
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\DarkAges.Library.sourcelink.json
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\bin\Debug\net8.0-windows\DarkAges.Library.deps.json
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\bin\Debug\net8.0-windows\DarkAges.Library.dll
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\bin\Debug\net8.0-windows\DarkAges.Library.pdb
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\DarkAges.Library.dll
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\refint\DarkAges.Library.dll
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\DarkAges.Library.pdb
+C:\Users\Dean\Documents\appgen\da_chunks\DarkAges.Library\obj\Debug\net8.0-windows\ref\DarkAges.Library.dll

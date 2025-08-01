@@ -1,0 +1,16 @@
+[Layout]
+Width=256
+Height=256
+ZoomLevel=5
+CenterX=0
+CenterY=0
+OffsetX=0
+OffsetY=0
+
+[TerrainColors]
+0=000000
+1=00FF00
+2=8B4513
+3=808080
+4=0000FF
+180=FFFFFF 

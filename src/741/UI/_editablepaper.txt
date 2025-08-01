@@ -1,0 +1,13 @@
+[Bounds]
+Width=430
+Height=12
+
+[Colors]
+BackgroundColor=White
+TextColor=Black
+SelectionColor=0,120,215
+CursorColor=Black
+
+[Font]
+Name=Arial
+Size=10 

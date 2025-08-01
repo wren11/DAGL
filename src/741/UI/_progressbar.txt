@@ -1,0 +1,4 @@
+[Colors]
+BarColor=Green
+BackColor=Gray
+BorderColor=Black 

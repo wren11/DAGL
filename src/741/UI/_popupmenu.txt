@@ -1,0 +1,14 @@
+[Layout]
+Width=200
+
+[Colors]
+BackgroundColor=64,64,64
+TextColor=White
+SelectedColor=128,128,128
+BorderColor=192,192,192
+
+[Font]
+Name=default
+
+[Animation]
+FadeSpeed=0.1 

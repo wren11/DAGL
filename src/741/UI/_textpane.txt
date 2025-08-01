@@ -1,0 +1,9 @@
+[Font]
+Name=default
+
+[Colors]
+TextColor=Black
+BackColor=Transparent
+
+[Settings]
+WordWrap=true 

@@ -1,0 +1,12 @@
+[Colors]
+BackgroundColor=Black
+BorderColor=White
+TextColor=White
+SelectedColor=Yellow
+
+[Font]
+Name=default
+
+[Layout]
+LineHeight=14
+HMargin=4 

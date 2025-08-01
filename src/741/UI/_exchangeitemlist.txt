@@ -1,0 +1,14 @@
+[Layout]
+ItemHeight=30
+IconSize=24
+
+[Colors]
+BackgroundColor=White
+BorderColor=Black
+TextColor=Black
+SelectedColor=LightBlue
+SelectedTextColor=Blue
+ValueColor=Gray
+
+[Font]
+Name=default 

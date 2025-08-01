@@ -1,0 +1,12 @@
+[Bounds]
+X=0
+Y=0
+Width=200
+Height=150
+
+[Properties]
+IsDraggable=false
+IsResizable=false
+BackgroundColor=0
+BorderColor=8421504
+BorderThickness=1 

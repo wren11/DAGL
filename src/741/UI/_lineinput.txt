@@ -1,0 +1,11 @@
+[Label]
+X=0
+Y=0
+Width=100
+Height=20
+
+[TextInput]
+X=100
+Y=0
+Width=200
+Height=20 

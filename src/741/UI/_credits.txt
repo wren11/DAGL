@@ -1,0 +1,61 @@
+[Bounds]
+X=100
+Y=50
+Width=600
+Height=500
+
+[CloseButton]
+X=250
+Y=450
+Width=100
+Height=30
+
+[Settings]
+ScrollSpeed=50.0
+
+[Credits]
+0=Dark Ages Library,Title,Gold
+1=,Spacer,White
+2=PROGRAMMING,Category,LightBlue
+3=Core Engine,Item,White
+4=Graphics System,Item,White
+5=Network Layer,Item,White
+6=UI Framework,Item,White
+7=,Spacer,White
+8=GAME DESIGN,Category,LightBlue
+9=World Objects,Item,White
+10=Combat System,Item,White
+11=Character System,Item,White
+12=Item System,Item,White
+13=,Spacer,White
+14=USER INTERFACE,Category,LightBlue
+15=Dialog System,Item,White
+16=Inventory Management,Item,White
+17=Control Panels,Item,White
+18=Screen Management,Item,White
+19=,Spacer,White
+20=DATA SYSTEMS,Category,LightBlue
+21=File I/O,Item,White
+22=Compression,Item,White
+23=Database Layer,Item,White
+24=Resource Management,Item,White
+25=,Spacer,White
+26=LIBRARIES USED,Category,LightBlue
+27=Silk.NET - OpenGL Bindings,Item,LightGray
+28=System.Text.Json - JSON Serialization,Item,LightGray
+29=System.Drawing.Common - Graphics,Item,LightGray
+30=DotNetZip - Archive Support,Item,LightGray
+31=,Spacer,White
+32=SPECIAL THANKS,Category,LightBlue
+33=Open Source Community,Item,White
+34=.NET Framework Team,Item,White
+35=Dark Ages Community,Item,White
+36=,Spacer,White
+37=BUILT WITH,Category,LightBlue
+38=.NET 8.0,Item,White
+39=C# Programming Language,Item,White
+40=OpenGL Graphics,Item,White
+41=,Spacer,White
+42=Thank you for using Dark Ages Library!,Title,Gold
+43=,Spacer,White
+44=Version 1.0,Item,LightGray 

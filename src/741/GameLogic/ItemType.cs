@@ -1,0 +1,38 @@
+namespace DarkAges.Library.GameLogic;
+
+public enum ItemType
+{
+    Generic = 0,
+    Sword = 1,
+    Axe = 2,
+    Mace = 3,
+    Bow = 4,
+    Staff = 5,
+    Dagger = 6,
+    Shield = 7,
+    Helmet = 8,
+    ChestArmor = 9,
+    LegArmor = 10,
+    Boots = 11,
+    Gloves = 12,
+    Ring = 13,
+    Necklace = 14,
+    Earring = 15,
+    Belt = 16,
+    Cloak = 17,
+    Potion = 18,
+    Food = 19,
+    Scroll = 20,
+    Gem = 21,
+    Ore = 22,
+    Herb = 23,
+    Cloth = 24,
+    Leather = 25,
+    Metal = 26,
+    Wood = 27,
+    Stone = 28,
+    Crystal = 29,
+    Book = 30,
+    Key = 31,
+    Coin = 32
+}

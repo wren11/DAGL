@@ -1,0 +1,12 @@
+[Layout]
+ItemHeight=20
+
+[Colors]
+BackgroundColor=White
+BorderColor=Black
+TextColor=Black
+SelectedColor=LightBlue
+SelectedTextColor=Blue
+
+[Font]
+Name=default 
