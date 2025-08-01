@@ -23,6 +23,10 @@ public class NetworkManager : IDisposable
     private string _username;
     private string _password;
     private bool _useEncryption;
+    private string _serverAddress;
+    private int _serverPort;
+    private int _connectionProtocol;
+    private readonly Dictionary<PacketType, TaskCompletionSource<NetworkPacket>> _pendingRequests = new();
 
     public event EventHandler<NetworkErrorEventArgs> NetworkError;
     public event EventHandler<SocketDataEventArgs> DataReceived;
@@ -53,8 +57,8 @@ public class NetworkManager : IDisposable
 
     public void SetServerInfo(string address, int port)
     {
-        // This is a placeholder. In a real implementation, this would
-        // likely store the server info for later use.
+        _serverAddress = address;
+        _serverPort = port;
     }
 
     public void SetCredentials(string username, string password)
@@ -65,8 +69,7 @@ public class NetworkManager : IDisposable
 
     public void SetConnectionType(int protocol)
     {
-        // This is a placeholder. In a real implementation, this would
-        // likely set the connection type for later use.
+        _connectionProtocol = protocol;
     }
 
     public void SetEncryption(bool useEncryption)
@@ -95,14 +98,15 @@ public class NetworkManager : IDisposable
             }
         };
 
+        var tcs = new TaskCompletionSource<NetworkPacket>();
+        _pendingRequests[PacketType.LoginResponse] = tcs;
+
         await SendAsync(packet.Serialize());
 
-        // This is a placeholder for handling the server's response.
-        // In a real implementation, we would wait for a LoginResponse.
-        await Task.Delay(1000);
-        var result = new AuthenticationResult { Success = true };
+        var responsePacket = await tcs.Task;
+        var result = new AuthenticationResult { Success = (bool)responsePacket.Data["Success"] };
         AuthenticationCompleted?.Invoke(this, result);
-        return true;
+        return result.Success;
     }
 
     public async Task<bool> ConnectAsync(string address, int port)
@@ -181,6 +185,13 @@ public class NetworkManager : IDisposable
             var receivedData = _useEncryption ? _encryption.Decrypt(e.Data) : e.Data;
             _statistics.BytesReceived += receivedData.Length;
             DataReceived?.Invoke(this, new SocketDataEventArgs(receivedData));
+
+            var packet = NetworkPacket.Deserialize(receivedData);
+            if (_pendingRequests.TryGetValue(packet.Type, out var tcs))
+            {
+                tcs.SetResult(packet);
+                _pendingRequests.Remove(packet.Type);
+            }
         }
         catch (Exception ex)
         {

@@ -1,3 +1,5 @@
+using DarkAges.Library.Core;
+
 namespace DarkAges.Library.UI.NPC;
 
 public class NPCIndirectTextMenu : NPCTextMenu
@@ -16,8 +18,12 @@ public class NPCIndirectTextMenu : NPCTextMenu
     {
         try
         {
-            // For now, use a placeholder since StringTable doesn't exist
-            var text = $"Indirect text: ID={_indirectTextId}, Key={_indirectTextKey}";
+            var key = $"indirect_text_{_indirectTextId}";
+            if (!string.IsNullOrEmpty(_indirectTextKey))
+            {
+                key += $"_{_indirectTextKey}";
+            }
+            var text = StringTable.GetString(key);
             SetMessage(text);
         }
         catch

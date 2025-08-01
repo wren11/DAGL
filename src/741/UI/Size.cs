@@ -12,6 +12,6 @@ public class Size(int width, int height)
 
     public static implicit operator System.Drawing.Size(Size v)
     {
-        throw new NotImplementedException();
+        return new System.Drawing.Size(v.Width, v.Height);
     }
 }

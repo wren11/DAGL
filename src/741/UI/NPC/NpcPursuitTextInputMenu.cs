@@ -18,9 +18,6 @@ public class NpcPursuitTextInputMenu : NPCTextInputMenu
     {
         // Corresponds to sub_53E1D0
         CurrentMessage = message;
-
-        // Here we would parse the message and set properties of the menu
-        // such as the prompt text, default value, etc.
-        // For now, this is a placeholder.
+        SetPrompt(message.Text);
     }
 }

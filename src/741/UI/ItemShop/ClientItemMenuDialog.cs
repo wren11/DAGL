@@ -1,21 +1,22 @@
 using System;
 using System.Collections.Generic;
-using DarkAges.Library.Graphics;
-using DarkAges.Library.GameLogic;
 using DarkAges.Library.Core.Events;
+using DarkAges.Library.GameLogic;
+using DarkAges.Library.Graphics;
 
 namespace DarkAges.Library.UI.ItemShop;
 
 public class ClientItemMenuDialog : DialogPane
 {
     private ushort _itemCount;
+
     public class ClientItemEntry
     {
         public byte ItemId { get; set; }
         public string ItemName { get; set; } = string.Empty;
         public uint Quantity { get; set; }
     }
-        
+
     private ClientItemEntry[] _items = [];
     private ushort _menuId;
     private int _selectedItemIndex = -1;
@@ -38,12 +39,12 @@ public class ClientItemMenuDialog : DialogPane
     private void ParsePacket(byte[] packet)
     {
         var offset = 2;
-            
+
         _menuId = BitConverter.ToUInt16(packet, offset);
         offset += 2;
-            
+
         _itemCount = packet[offset++];
-            
+
         _items = new ClientItemEntry[_itemCount];
         for (var i = 0; i < _itemCount; i++)
         {
@@ -51,7 +52,7 @@ public class ClientItemMenuDialog : DialogPane
             {
                 ItemId = packet[offset++]
             };
-                
+
             if (_menuId == 78)
             {
                 _items[i].Quantity = BitConverter.ToUInt32(packet, offset);
@@ -65,7 +66,7 @@ public class ClientItemMenuDialog : DialogPane
         Size = new System.Drawing.Size(400, 300);
         Position = new System.Drawing.Point(120, 90);
 
-        _titleLabel = new TextEditControlPane("Your Items", 
+        _titleLabel = new TextEditControlPane("Your Items",
             new System.Drawing.Rectangle(10, 10, 380, 20), true);
         AddChild(_titleLabel);
 
@@ -112,30 +113,30 @@ public class ClientItemMenuDialog : DialogPane
             var item = _items[i];
             var itemInfo = GetItemInfo(item.ItemId);
             var displayText = itemInfo.Name;
-                
+
             if (_menuId == 78 && item.Quantity > 0)
             {
                 displayText += $" (x{item.Quantity})";
             }
-                
+
             var itemButton = new TextButtonExControlPane(displayText);
             itemButton.Position = new System.Drawing.Point(0, i * 25);
             itemButton.Size = new System.Drawing.Size(190, 23);
             itemButton.OnClick += (sender) => OnItemSelected(i);
-                
+
             _itemListPane.AddChild(itemButton);
         }
     }
 
-    private ItemInfo GetItemInfo(byte itemId)
+    private Item GetItemInfo(byte itemId)
     {
         // For now, create a placeholder item info since ItemMetaDescMan.GetItemMeta doesn't exist
-        return new ItemInfo
+        return new Item
         {
             Id = itemId,
             Name = $"Item {itemId}",
             Description = "This item has no description available.",
-            SellPrice = (uint)(itemId * 10)
+            Value = (itemId * 10)
         };
     }
 
@@ -152,13 +153,13 @@ public class ClientItemMenuDialog : DialogPane
     {
         var item = _items[itemIndex];
         var itemInfo = GetItemInfo(item.ItemId);
-            
-        var description = $"{itemInfo.Name}\n\n{itemInfo.Description}\n\nSell Price: {itemInfo.SellPrice} gold";
+
+        var description = $"{itemInfo.Name}\n\n{itemInfo.Description}\n\nSell Price: {itemInfo.Value} gold";
         if (_menuId == 78 && item.Quantity > 0)
         {
             description += $"\nQuantity: {item.Quantity}";
         }
-            
+
         _descriptionPane.Show(description, new System.Drawing.Point(0, 0), _descriptionPane.Size);
     }
 
@@ -168,26 +169,25 @@ public class ClientItemMenuDialog : DialogPane
         {
             var item = _items[_selectedItemIndex];
             var itemInfo = GetItemInfo(item.ItemId);
-                
+
             if (int.TryParse(_quantityInput.Text, out var quantity) && quantity > 0)
             {
                 if (_menuId == 78 && item.Quantity > 0 && quantity > item.Quantity)
                 {
                     quantity = (int)item.Quantity;
                 }
-                    
+
                 var serverItem = new ServerItem
                 {
                     ItemId = item.ItemId,
                     Name = itemInfo.Name,
-                    Price = (int)itemInfo.SellPrice
+                    Price = itemInfo.Value
                 };
 
                 var args = new ItemTransactionEventArgs(serverItem, quantity, ItemTransactionType.Sell);
-                    
+
                 ItemTransactionRequested?.Invoke(this, args);
 
-                // TODO: The logic for what to do after a transaction is not clear.
                 // Assuming for now that we close the dialog.
                 Close(1);
             }
@@ -208,15 +208,7 @@ public class ClientItemMenuDialog : DialogPane
 
         base.Render(spriteBatch);
     }
-
-    private class ItemInfo
-    {
-        public byte Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public uint SellPrice { get; set; }
-    }
-
+    
     public ushort MenuId => _menuId;
     public ushort ItemCount => _itemCount;
     public ClientItemEntry[] Items => _items;

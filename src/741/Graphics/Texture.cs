@@ -69,18 +69,6 @@ public class Texture : IDisposable
         IsDisposed = false;
     }
 
-    public Texture(GL imageWidth, string imageHeight)
-    {
-        //TODO
-        _gl = imageWidth;
-        Width = int.Parse(imageHeight);
-        Height = 0; // Height is not set in this constructor
-        Handle = 0; // No OpenGL texture handle
-        IsDisposed = false;
-        // This constructor is not fully implemented, as it seems to be a placeholder.
-        // You might want to implement it based on your specific requirements.
-    }
-
     private void SetParameters()
     {
         if (_gl == null) return;

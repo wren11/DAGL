@@ -67,12 +67,6 @@ public class Surface(int width, int height, byte[] pixelData) : IDisposable
         }
     }
 
-    public void DrawText(string text, Point position, Color color)
-    {
-        // This is a placeholder. In a real implementation, this would
-        // use a font rendering library to draw the text to the surface.
-    }
-
     public void Dispose()
     {
         if (!IsDisposed)

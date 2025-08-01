@@ -70,8 +70,6 @@ public class Palette
 
     public void Dispose()
     {
-        // This is a placeholder. In a real implementation, this would
-        // release any resources used by the palette.
     }
 
     public void SetColor(int index, Color color)

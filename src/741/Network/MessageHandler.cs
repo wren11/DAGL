@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using DarkAges.Bot.Core;
 using DarkAges.Library.World;
+using DarkAges.Library.UI.Dialogs;
 
 namespace DarkAges.Library.Network;
 
@@ -175,9 +176,8 @@ public class MessageHandler
         var message = JsonSerializer.Deserialize<NpcDialogMessage>(data.GetRawText());
         if (message == null) return;
 
-        // TODO: Create appropriate NPC dialog - NpcDialog class doesn't exist yet
-        // var dialog = new UI.Dialogs.NpcDialog(null, message.DialogText, message.Options);
-        // dialog.Show();
-        Console.WriteLine($"NPC Dialog: {message.DialogText}");
+        var dialog = new NpcDialog(message.DialogText, message.Options);
+        dialog.Show();
+        // Console.WriteLine($"NPC Dialog: {message.DialogText}");
     }
 }

@@ -397,7 +397,6 @@ public class WorldObject_NPC : WorldObject_Living
         Services.Add(service);
     }
 
-    //TODO: this method should be called periodically to refresh the merchant's inventory
     private void RefreshMerchantInventory()
     {
         if (!IsMerchant) return;

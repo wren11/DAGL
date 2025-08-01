@@ -378,12 +378,6 @@ public class SpriteBatch : IDisposable
         _vertices.Add(new Vertex(new Vector2(boundsX + i * iconSize, itemHeight + itemIcon.Height), Vector2.Zero, Color.White));
         _indices.AddRange([index, index + 1, index + 2, index, index + 2, index + 3]);
     }
-
-    public void Draw(IndexedImage image, Vector2 position, Rectangle? sourceRectangle, Palette palette, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, int zOrder, float opacity)
-    {
-        // This is a placeholder. In a real implementation, this would
-        // use the palette to color the image and draw it to the screen.
-    }
 }
 
 public class Vector2
